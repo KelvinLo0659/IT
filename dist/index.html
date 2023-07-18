@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - A Pen by F5B_Kelvin_16</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Arduino Combination Lock</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<header>
+		<h1>Arduino Combination Lock</h1>
+		<nav>
+			<ul>
+				<li><a href="#about">About</a></li>
+				<li><a href="#materials">Materials</a></li>
+				<li><a href="#schematic">Schematic</a></li>
+        <li><a href="#Video teaching">Video teaching </a></li>
+				<li><a href="#code">Code</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section id="about">
+      <hr>
+			<h2>About</h2>
+			<p>In this tutorial, you'll learn how to use an Arduino, a breadboard, and a keypad to make a combination lock. The lock will only open if the correct combination is entered on the keypad.</p>
+		</section>
+
+		<section id="materials">
+      <hr>
+			<h2>Materials</h2>
+			<ul>
+				<li>Arduino board</li>
+				<li>Breadboard</li>
+				<li>Keypad</li>
+				<li>Jumper wires</li>
+				<li>LED</li>
+				<li>220 ohm resistor</li>
+			</ul>
+		</section>
+
+		<section id="schematic">
+      <hr>
+			<h2>Schematic</h2>
+			<img src="https://i.postimg.cc/B69CQKnb/2023-07-18-162544.png" alt="Schematic">
+      <hr>
+		</section>
+    <section id = "Video teaching">
+      <h2>Video</h2>
+       <video width="500px" height="500px" controls="controls">
+        <source src=https://www.kapwing.com/videos/64b6b35cc59b040377042744 type="video/mp4" />
+       </video>
+      <a href="https://www.kapwing.com/videos/64b6b35cc59b040377042744" video></a>
+      
+      <hr>
+      </section>
+    
+
+		<section id="code">
+			<h2>Code</h2>
+			<pre><code class="language-cpp">// Arduino Combination Lock
+
+#include &lt;Password.h&gt;
+#include &lt;Keypad.h&gt;
+#include &lt;Servo.h&gt;
+Servo myservo;
+Password password = Password("2468"); /* set 2468 be the password
+const byte ROWS = 4;
+const byte COLS = 4;
+char keys[ROWS][COLS] = {
+  {'1','2','3','A'},
+  {'4','5','6','B'},
+  {'7','8','9','C'},
+  {'*','0','#','D'}
+};
+byte rowPins [ROWS] = { 9,8,7,6 };
+byte colPins [COLS] = { 5,4,3,2, };
+Keypad keypad = Keypad ( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
+void setup()
+{
+  Serial.begin(9600);
+  delay(200);
+  pinMode(11, OUTPUT);
+  pinMode(12, OUTPUT);
+  myservo.attach(13);
+  keypad.addEventListener(keypadEvent);
+}
+
+void loop()
+{
+  keypad.getkey();
+  myservo,write(0);
+}
+void keypadEvent (KeypadEvent eKey){
+  switch (keypad.getState()){
+    case PRESSED:
+    	Serial.print("Pressed: ");
+    	Serial.println(eKey);
+    	switch (eKey){
+          case '*' : checkPassword(); break;
+          case '#' : password.reset(); break;
+          default: password.append(eKey);
+        }
+  }
+}
+void checkPassword(){
+  if (password.evaluate()){
+    Serial.println("Sucess");
+    myservo.write(90);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(11,LOW);
+  }else{
+    Serial.println("Wrong");
+    myservo.write(0);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(12,LOW);
+  }
+}
+    
+      
+      
+    </code></pre>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2023 Arduino Combination Lock</p>
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
